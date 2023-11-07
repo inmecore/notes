@@ -8,7 +8,7 @@ CAS(V,E,N)
 # E:expectation,  原变量的期望值
 # N:new, 新值
 ```
-<div align="center"><img src="../images/cas.jpg" style="width:40%;height:40%;" alt="cas"></div>
+<div align="center"><img src="img/cas.jpg" style="width:40%;height:40%;" alt="cas"></div>
 
 ### 二、原理
 调用CPU指令集cmpxchg完成，多核情况下，CPU靠锁定缓存或总线完成。
@@ -19,13 +19,13 @@ CAS(V,E,N)
 2、数据没被缓存或跨多行缓存，则使用总线锁。
 ```
 ###### 总线锁
-指给总线加锁，阻塞其他处理。
-<div align="center"><img src="../images/cpu.jpg" style="width:40%;height:40%;" alt="cas"></div>
+指给总线加锁，阻塞其他处理器。
+<div align="center"><img src="img/cpu.jpg" style="width:40%;height:40%;" alt="cas"></div>
 
 ### 三、问题
 ###### ABA
 即A——>B——>A，解决办法，添加版本号，1A——>2B——>3A。
-<div align="center"><img src="../images/aba.jpg" style="width:40%;height:40%;" alt="cas"></div>
+<div align="center"><img src="img/aba.jpg" style="width:40%;height:40%;" alt="cas"></div>
 
 ###### 自旋锁
 线程获取锁失败，自旋等待锁释放，如果锁一直没被释放，或被其他线程抢占，线程会一直自旋，造成资源浪费。解决办法，限制自旋次数。
